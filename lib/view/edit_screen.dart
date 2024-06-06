@@ -5,7 +5,7 @@ import 'package:maintestproject/model/crud_model.dart';
 import 'package:maintestproject/services/crud_service.dart';
 
 class Editscreen extends StatefulWidget {
- final String id;
+  final String id;
   final CrudModel crmodel;
   const Editscreen({super.key, required this.crmodel, required this.id});
 
@@ -14,7 +14,7 @@ class Editscreen extends StatefulWidget {
 }
 
 class _EditscreenState extends State<Editscreen> {
-  final TextEditingController nameController = TextEditingController( );
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController placeController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   File? _image;
@@ -75,13 +75,19 @@ class _EditscreenState extends State<Editscreen> {
               ),
             ),
             TextButton(
-                onPressed: ()  {
+                onPressed: () {
                   // if (_image == null) {
                   //   log('all fields are required');
-              String  imageurl =  widget.crmodel.image.toString();
-                  CrudService().editdata(CrudModel(age: ageController.text,name: nameController.text,place: placeController.text,image: imageurl),widget.id );
-                  },
-                  
+                  String imageurl = widget.crmodel.image.toString();
+                  CrudService().editdata(
+                      CrudModel(
+                          age: ageController.text,
+                          name: nameController.text,
+                          place: placeController.text,
+                          image: imageurl),
+                      widget.id);
+                },
+
                 // },
                 child: const Text('update')),
           ],
